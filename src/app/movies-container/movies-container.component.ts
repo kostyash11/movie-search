@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Movie, MovieResponse, MoviesRequest } from "../movie";
 import { SearchMovieService } from '../search-movie.service';
 
@@ -7,16 +7,13 @@ import { SearchMovieService } from '../search-movie.service';
   templateUrl: './movies-container.component.html',
   styleUrls: ['./movies-container.component.css']
 })
-export class MoviesContainerComponent implements OnInit {
+export class MoviesContainerComponent {
   totalCount: number = 0;
   loading: boolean = false;
   movies: Movie[];
   currentRequest: MoviesRequest = null;
   constructor(private searchMovieService: SearchMovieService) { }
-
-  ngOnInit() {
-  }
-
+  
   handleSearch(request) {
     this.currentRequest = request;
     this.loading = true;
