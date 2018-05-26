@@ -27,7 +27,7 @@ export class MoviesContainerComponent implements OnInit {
     });
   }
   handlePageChanged(page:number) {
-    this.currentRequest.page = page;
+    this.currentRequest.page = page+1;
     this.loading = true;
     this.searchMovieService.getMovies(this.currentRequest).subscribe((data: MovieResponse) => {
       this.loading = false;
