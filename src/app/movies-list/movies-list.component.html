@@ -1,0 +1,16 @@
+  <div class="movies-list">
+    <mat-card class="movie-card" *ngFor="let movie of movies">
+      <mat-card-title class="movie-title">
+        {{movie.Title}}
+      </mat-card-title>
+      <mat-card-subtitle class="movie-subtitle">        
+        Year: {{movie.Year}}
+      </mat-card-subtitle>
+      <img mat-card-image [src]="movie.Poster" />
+      <mat-card-footer class="movie-footer">
+        imdbID:{{movie.imdbID}}
+      </mat-card-footer>
+    </mat-card>
+  </div>
+
+

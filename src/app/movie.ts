@@ -7,6 +7,13 @@ export interface Movie {
 }
 export interface MovieResponse {
   Response: string;
-  movies: Movie[]
+  totalResults: number;
+  Search: Movie[]
 }
+export interface MoviesRequest {
+  title: string;
+  year?: number;
+  page: number;
+}
+
 

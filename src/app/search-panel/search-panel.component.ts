@@ -1,14 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { MoviesRequest } from "../movie";
 
 @Component({
-  selector: 'app-search-panel',
+  selector: 'search-panel',
   templateUrl: './search-panel.component.html',
   styleUrls: ['./search-panel.component.css']
 })
 export class SearchPanelComponent implements OnInit {
   years: number[] = [];
-  disabled: boolean;
-  value = '';
+  searchDisabled: boolean = true;
+  title = '';
+  year: number = null;
+  @Output() searchChanged: EventEmitter<MoviesRequest> = new EventEmitter<MoviesRequest>();
+
   constructor() { }
 
   ngOnInit() {
@@ -16,5 +20,16 @@ export class SearchPanelComponent implements OnInit {
       this.years.push(i);
     }
   }
+  handleTitleChange(title) {
+    this.searchDisabled = !title;
+  }
 
+  handleYearChanged(year) {
+    this.year = year;
+  }
+
+  handleSearchClick() {
+    let request: MoviesRequest = { title: this.title, year: this.year, page: 1 };
+    this.searchChanged.emit(request);
+  }
 }

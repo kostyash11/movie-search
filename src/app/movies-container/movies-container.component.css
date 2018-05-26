@@ -1,0 +1,8 @@
+.movies-paginator {
+  display: flex;
+  justify-content: center;
+}
+.movie-loader{
+  margin:10em auto;
+  display:flex;
+}

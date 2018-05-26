@@ -1,0 +1,22 @@
+.movies-list {
+  display: flex;
+  margin:auto;
+  width:800px;
+  flex-wrap: wrap;
+  justify-content:space-around;
+}
+.movie-card {
+  margin: 1em 0em;
+  width: 13%;
+}
+.movie-title{
+  font-size:14px;
+  text-align:center;
+}
+.movie-subtitle{
+  font-size:13px;
+  text-align:center;
+}
+.movie-footer {
+  font-size: 12px;
+}

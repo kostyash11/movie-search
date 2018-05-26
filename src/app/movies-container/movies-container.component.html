@@ -1,3 +1,8 @@
 <p>
-  movies-container works!
+  <search-panel (searchChanged)="handleSearch($event)"></search-panel>
+  <mat-spinner class="movie-loader" *ngIf="loading"></mat-spinner>
+  <movies-list *ngIf="!loading" (pageChanged)="handlePageChanged($event.pageIndex)" [totalCount]="totalCount" [movies]="movies"></movies-list>
 </p>
+<mat-paginator class="movies-paginator" [length]="totalCount" (page)="handlePageChanged($event?.pageIndex)"
+               [pageSize]="10">
+</mat-paginator>

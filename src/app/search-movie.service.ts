@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
-import { Movie, MovieResponse} from "./movie";
+import { Movie, MovieResponse, MoviesRequest} from "./movie";
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +11,9 @@ export class SearchMovieService {
   private baseUrl: string = 'http://www.omdbapi.com/?i=tt3896198&apikey=b4773d58';
   constructor(private http: HttpClient) { }
 
-  getMovies(title: string,page:number=1, year?: number): Observable<any>{
-    let url = `${this.baseUrl}&s=${title}&page=${page}`;
-    url += year ? `&y=${year}` : "";
+  getMovies(request: MoviesRequest): Observable<any>{
+    let url = `${this.baseUrl}&s=${request.title}&page=${request.page}`;
+    url += request.year ? `&y=${request.year}` : "";
 
 
     return this.http.get<MovieResponse>(url).pipe(
